@@ -6,7 +6,7 @@ const fieldIds = [1, 2, 3];
 
 const fetchData = async (fieldId) => {
   const response = await axios.get(
-    `http://localhost:5000/fields-data/${fieldId}`
+    `https://environment-monitoring.onrender.com/fields-data/${fieldId}`
   );
   return response.data;
 };
