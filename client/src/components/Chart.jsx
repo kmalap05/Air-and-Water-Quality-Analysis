@@ -40,14 +40,18 @@ const Chart = ({ fieldId, fieldData, fieldName, fieldColor }) => {
       legend: true
     },
     scales: {
-      y: {}
+      y: {
+        stacked: true
+      }
     }
   };
 
   return (
-    <div className="m-7 max-h-72">
-      <Line data={data} options={options}></Line>
-    </div>
+    <>
+      <div className="p-4">
+        <Line data={data} options={options} key={fieldName}></Line>
+      </div>
+    </>
   );
 };
 

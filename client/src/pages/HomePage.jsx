@@ -40,14 +40,14 @@ const HomePage = () => {
     };
 
     fetchingData();
-  }, []);
+  }, [fieldData]);
 
   return (
     <>
       <h1 className="pt-2 pb-2 text-2xl font-semibold text-center shadow-md bg-slate-200">
         Water Quality Monitoring {'( IOE Mini Project )'}
       </h1>
-      <div className="flex flex-wrap justify-center">
+      <div className="m-8 mt-3 grid grid-cols-2">
         {fieldIds.map((fieldId) => (
           <Chart
             key={fieldId}
