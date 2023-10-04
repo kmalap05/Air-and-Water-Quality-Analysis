@@ -45,7 +45,7 @@ const Chart = ({ fieldId, fieldData, fieldName, fieldColor }) => {
   };
 
   return (
-    <div className="max-w-xl m-7">
+    <div className="m-7 max-h-72">
       <Line data={data} options={options}></Line>
     </div>
   );

@@ -47,7 +47,7 @@ const HomePage = () => {
       <h1 className="pt-2 pb-2 text-2xl font-semibold text-center shadow-md bg-slate-200">
         Water Quality Monitoring {'( IOE Mini Project )'}
       </h1>
-      <div className="m-7 flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center">
         {fieldIds.map((fieldId) => (
           <Chart
             key={fieldId}
