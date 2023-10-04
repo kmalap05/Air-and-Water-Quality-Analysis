@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Chart from '../components/Chart';
+import Chart from '../components/Chart'; // Import the updated Chart component
 
 const fieldIds = [1, 2, 3];
 
@@ -34,7 +34,7 @@ const HomePage = () => {
         setFieldData((prevData) => ({
           ...prevData,
           [`field${fieldId}Data`]: fieldValues,
-          [`field${fieldId}Id`]: fieldIdValues
+          [`field${fieldId}Id`]: fieldIdValues,
         }));
       }
     };
@@ -43,38 +43,69 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <h1 className="pt-2 pb-2 text-2xl font-semibold text-center shadow-md bg-slate-200">
+    <div className="bg-gray-300 min-h-screen p-4">
+      <h1 className="pt-2 pb-2 text-2xl font-semibold text-center shadow-md bg-slate-100">
         Water Quality Monitoring {'( IOE Mini Project )'}
       </h1>
-      <div className="flex flex-wrap justify-center">
+      <div className="ml-4 mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
         {fieldIds.map((fieldId) => (
-          <Chart
+          <div
             key={fieldId}
-            fieldId={fieldData[`field${fieldId}Id`]}
-            fieldData={fieldData[`field${fieldId}Data`]}
-            fieldName={
-              fieldId === 1
+            className={`p-4 bg-white rounded-md shadow-md border-2 border-gray-200 hover:shadow-xl transform transition-all duration-300 ease-in-out hover:scale-105`}
+            style={{ width: '100%', height: '100%' }}
+          >
+            <h2 className="text-xl font-semibold mb-2">
+              {fieldId === 1
                 ? 'pH Value'
                 : fieldId === 2
                 ? 'TDS Value'
                 : fieldId === 3
                 ? 'Turbidity'
-                : ''
-            }
-            fieldColor={
-              fieldId === 1
-                ? 'green'
+                : ''}
+            </h2>
+            {/* Use the updated Chart component with props */}
+            <Chart
+              fieldId={fieldData[`field${fieldId}Id`]}
+              fieldData={fieldData[`field${fieldId}Data`]}
+              fieldName={
+                fieldId === 1
+                  ? 'pH Value'
+                  : fieldId === 2
+                  ? 'TDS Value'
+                  : fieldId === 3
+                  ? 'Turbidity'
+                  : ''
+              }
+              fieldColor={
+                fieldId === 1
+                  ? 'rgb(255, 0, 0)'
+                  : fieldId === 2
+                  ? 'rgba(0, 0, 255)' // Custom color for TDS Value
+                  : fieldId === 3
+                  ? 'rgba(60, 180, 113)' // Custom color for Turbidity
+                  : ''
+              }
+              width={800}
+              height={400}
+              xAxisLabel={fieldId === 1
+                ? 'Entries '
                 : fieldId === 2
-                ? 'aqua'
+                ? 'Entries '
                 : fieldId === 3
-                ? 'brown'
-                : ''
-            }
-          />
+                ? 'Entries ' 
+                : ''}
+              yAxisLabel={fieldId === 1
+                ? 'PH'
+                : fieldId === 2
+                ? 'mg/l'
+                : fieldId === 3
+                ? 'NTU' 
+                : ''} 
+            />
+          </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

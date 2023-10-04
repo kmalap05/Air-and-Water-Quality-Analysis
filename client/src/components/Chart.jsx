@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 // eslint-disable-next-line react/prop-types
-const Chart = ({ fieldId, fieldData, fieldName, fieldColor }) => {
+const Chart = ({ fieldId, fieldData, fieldName, fieldColor, width, height, xAxisLabel, yAxisLabel }) => {
   const data = {
     labels: fieldId,
     datasets: [
@@ -29,23 +29,40 @@ const Chart = ({ fieldId, fieldData, fieldName, fieldColor }) => {
         label: fieldName,
         data: fieldData,
         borderColor: fieldColor,
-        fill: 'true',
-        tension: 0.0
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        fill: true,
+        tension: 0.4
       }
     ]
   };
 
   const options = {
     plugins: {
-      legend: true
+      legend: {
+        display: true,
+        position: 'top',
+      },
     },
     scales: {
-      y: {}
-    }
+      x: {
+        title: {
+          display: true,
+          text: xAxisLabel,
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: yAxisLabel,
+        },
+      },
+    },
+    maintainAspectRatio: false,
+    responsive: true,
   };
 
   return (
-    <div className="m-7 max-h-72">
+    <div className="max-w-xl m-7" style={{ width, height }}>
       <Line data={data} options={options}></Line>
     </div>
   );
