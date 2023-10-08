@@ -37,18 +37,44 @@ const Chart = ({ fieldId, fieldData, fieldName, fieldColor }) => {
 
   const options = {
     plugins: {
-      legend: true
+      display: true,
+      position: 'top'
+    },
+    tooltip: {
+      mode: 'index', // 'point', 'nearest', 'index', 'x', 'y'
+      intersect: false
     },
     scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Entries'
+        },
+        grid: {
+          display: false
+        },
+        ticks: {
+          maxRotation: 45
+        }
+      },
       y: {
-        stacked: true
+        title: {
+          display: true,
+          text: 'Value'
+        },
+        grid: {
+          display: false
+        },
+        ticks: {
+          beginAtZero: true
+        }
       }
     }
   };
 
   return (
     <>
-      <div className="p-4">
+      <div className="p-4 shadow-lg rounded-lg m-4 border border-slate-300">
         <Line data={data} options={options} key={fieldName}></Line>
       </div>
     </>

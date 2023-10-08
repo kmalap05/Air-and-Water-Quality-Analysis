@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Chart from '../components/Chart';
+import { Link } from 'react-router-dom';
 
 const fieldIds = [1, 2, 3];
 
@@ -22,7 +23,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchingData = async () => {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await new Promise((resolve) => setTimeout(resolve, 0));
 
       for (const fieldId of fieldIds) {
         const response = await fetchData(fieldId);
@@ -44,9 +45,15 @@ const HomePage = () => {
 
   return (
     <>
-      <h1 className="pt-2 pb-2 text-2xl font-semibold text-center shadow-md bg-slate-200">
-        Water Quality Monitoring {'( IOE Mini Project )'}
-      </h1>
+      <nav className="flex justify-between items-center px-12 py-2">
+        <h1 className="pt-2 pb-2 text-2xl font-semibold text-center text-black p-5 rounded-2xl">
+          Water Quality Monitoring
+        </h1>
+        <div className="flex gap-8 items-center justify-center ">
+          <Link to="/">Graph</Link>
+          <Link to="/analysis">Analysis</Link>
+        </div>
+      </nav>
       <div className="m-8 mt-3 grid grid-cols-2">
         {fieldIds.map((fieldId) => (
           <Chart
