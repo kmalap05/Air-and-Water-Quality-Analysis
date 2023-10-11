@@ -74,7 +74,7 @@ const Chart = ({ fieldId, fieldData, fieldName, fieldColor }) => {
 
   return (
     <>
-      <div className="p-4 shadow-lg rounded-lg m-4 border border-slate-300">
+      <div style={{backgroundColor:'white'}} className="p-4 shadow-lg rounded-lg m-4 border border-slate-300">
         <Line data={data} options={options} key={fieldName}></Line>
       </div>
     </>
