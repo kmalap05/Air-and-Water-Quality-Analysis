@@ -1,10 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import Analysis from './pages/Analysis';
 
 const App = () => {
   return (
     <Routes>
-      <Route index element={<HomePage />}></Route>
+      <Route path='/' index element={<HomePage />}></Route>
+      <Route path='/analysis' index element={<Analysis />}></Route>
     </Routes>
   );
 };
